@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'home']);
+
 Route::get('login', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'auth_user']);
+
 Route::get('register', [AuthController::class, 'register']);
 Route::post('register', [AuthController::class, 'create_user']);

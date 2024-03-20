@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -11,6 +12,28 @@ class AuthController extends Controller
     public function login()
     {
         return view('auth.login');
+    }
+
+    public function auth_user (Request $request)
+    {
+        $remember = !empty($request->remember) ? true : false;
+
+        if(Auth::attempt([
+            'email' => $request->email,
+            'password' => $request->password,
+        ], $remember))
+        {
+            if (!empty(Auth::user()->email_verified_at))
+            {
+                echo 'successfully';
+            }
+            else
+            {
+                echo 'successfully 2';
+            }
+        }else{
+            return redirect()->back()->with('error', 'Please enter current email and password');
+        }
     }
 
     public function register()
