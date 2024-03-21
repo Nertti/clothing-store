@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,34 +14,29 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function auth_user (Request $request)
+    public function auth_user(Request $request)
     {
         $remember = !empty($request->remember) ? true : false;
 
-        if(Auth::attempt([
-            'email' => $request->email,
-            'password' => $request->password,
-        ], $remember))
-        {
-            if (!empty(Auth::user()->email_verified_at))
-            {
-                echo 'successfully';
+        if (Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember)) {
+            if (!empty(Auth::user()->is_admin) && Auth::user()->is_admin == 1) {
+                return redirect('panel/dashboard')->with('success', 'Register successfully');
+            } else {
+                return redirect('account')->with('success', 'Register successfully');
             }
-            else
-            {
-                echo 'successfully 2';
-            }
-        }else{
+        } else {
             return redirect()->back()->with('error', 'Please enter current email and password');
         }
     }
 
-    public function register()
+    public
+    function register()
     {
         return view('auth.register');
     }
 
-    public function create_user(Request $request)
+    public
+    function create_user(Request $request)
     {
 
         request()->validate(array(
@@ -57,5 +52,12 @@ class AuthController extends Controller
         $save->save();
 
         return redirect('login')->with('success', 'Register successfully');
+    }
+
+    public
+    function logout()
+    {
+        Auth::logout();
+        return redirect('login');
     }
 }

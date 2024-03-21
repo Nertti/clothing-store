@@ -54,7 +54,7 @@
                                     <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
                                     <p class="text-center small">Enter your personal details to create account</p>
                                 </div>
-{{--                                @include('layouts._message')--}}
+                                @include('layouts._message')
                                 <form class="row g-3 needs-validation" action="" method="post">
                                     {{csrf_field()}}
                                     <div class="col-12">
