@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
@@ -17,4 +18,6 @@ Route::get('logout', [AuthController::class, 'logout']);
 
 Route::group(['middleware' => 'admin'], function (){
     Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
+
+    //Route::get('panel/dashboard', [AdminController::class, 'admin']);
 });
