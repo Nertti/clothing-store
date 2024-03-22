@@ -19,5 +19,12 @@ Route::get('logout', [AuthController::class, 'logout']);
 Route::group(['middleware' => 'admin'], function (){
     Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
 
-    //Route::get('panel/dashboard', [AdminController::class, 'admin']);
+    Route::get('panel/users/list', [AdminController::class, 'users_list']);
+
+    Route::get('panel/users/add', [AdminController::class, 'add_user']);
+    Route::post('panel/users/add', [AdminController::class, 'insert_user']);
+    Route::get('panel/users/edit/{id}', [AdminController::class, 'edit_user']);
+    Route::post('panel/users/edit/{id}', [AdminController::class, 'update_user']);
+
+    Route::get('panel/users/delete/{id}', [AdminController::class, 'delete_user']);
 });

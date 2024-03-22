@@ -4,7 +4,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
         <li class="nav-item">
-            <a class="nav-link " href="index.html">
+            <a class="nav-link " href="{{ url('panel/dashboard') }}">
                 <i class="bi bi-grid"></i>
                 <span>Обзор</span>
             </a>
@@ -62,8 +62,8 @@
         </li><!-- End blog Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="{{url('panel/users')}}">
-                <i class="bi bi-person"></i>
+            <a class="nav-link collapsed" href="{{url('panel/users/list')}}">
+                <i class="bi bi-people"></i>
                 <span>Пользователи</span>
             </a>
         </li><!-- End Users Nav -->
