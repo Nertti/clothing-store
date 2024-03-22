@@ -11,12 +11,14 @@ class AdminController extends Controller
 {
     public function users_list()
     {
+        $data['active_class'] = 'users';
         $data['getRecord'] = User::getRecordUser();
         return view('backend.users.list', $data);
     }
     public function add_user( Request $request)
     {
-        return view('backend.users.add');
+        $data['active_class'] = 'users';
+        return view('backend.users.add', $data);
     }
     public function insert_user( Request $request)
     {
@@ -47,6 +49,7 @@ class AdminController extends Controller
 
     public function edit_user($id)
     {
+        $data['active_class'] = 'users';
         $data['getRecord'] = User::getSingle($id);
         return view('backend.users.edit', $data);
     }
