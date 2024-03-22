@@ -28,13 +28,13 @@
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Имя</label>
                                 <div class="col-sm-10">
-                                    <input type="text" name="name" required class="form-control" id="inputText">
+                                    <input type="text" name="name" value="{{old('name')}}" required class="form-control" id="inputText">
                                 </div>
                             </div>
                             <div class="row mb-3">
                                 <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
                                 <div class="col-sm-10">
-                                    <input type="email" name="email" required class="form-control" id="inputEmail">
+                                    <input type="email" name="email" value="{{old('email')}}" required class="form-control" id="inputEmail">
                                 </div>
                             </div>
                             <div class="row mb-3">
@@ -47,13 +47,13 @@
                                 <legend class="col-form-label col-sm-2 pt-0">Админ</legend>
                                 <div class="col-sm-10">
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="is_admin" id="gridRadios1" value="1">
+                                        <input class="form-check-input" type="radio" {{ (old('is_admin') == 1) ? 'checked' : '' }} name="is_admin" id="gridRadios1" value="1">
                                         <label class="form-check-label" for="gridRadios1">
                                             Да
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="is_admin" id="gridRadios2" value="0" checked="">
+                                        <input class="form-check-input" type="radio" {{ (old('is_admin') == 0) ? 'checked' : '' }} name="is_admin" id="gridRadios2" value="0">
                                         <label class="form-check-label" for="gridRadios2">
                                             Нет
                                         </label>
@@ -62,7 +62,8 @@
                             </fieldset>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success">Сохранить</button>
-                                <button type="reset" class="btn btn-secondary">Сбросить</button>
+                                <button type="reset" class="btn btn-outline-secondary">Сбросить</button>
+                                <a href="{{url('panel/users/list')}}" class="btn btn-secondary">Назад</a>
                             </div>
                         </form><!-- End Form -->
 

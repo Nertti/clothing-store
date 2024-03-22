@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -19,11 +20,20 @@ class AdminController extends Controller
     }
     public function insert_user( Request $request)
     {
-        request()->validate(array(
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required',
-        ));
+        ]);
+
+        if ($validator->fails()) {
+            if ($validator->errors()->has('name')) {
+                return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнено имя');
+            }
+
+            if ($validator->errors()->has('email')) {
+                return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнен email или email уже занят');
+            }
+        }
 
         $save = new User;
         $save->name = trim($request->name);
@@ -42,10 +52,20 @@ class AdminController extends Controller
     }
     public function update_user( $id, Request $request)
     {
-//        request()->validate(array(
-//            'name' => 'required',
-//            'email' => 'required|email|unique:users',
-//        ));
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email,' . $id
+        ]);
+
+        if ($validator->fails()) {
+            if ($validator->errors()->has('name')) {
+                return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнено имя');
+            }
+
+            if ($validator->errors()->has('email')) {
+                return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнен email или email уже занят');
+            }
+        }
 
         $save = User::getSingle($id);
         $save->name = trim($request->name);

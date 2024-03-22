@@ -12,13 +12,11 @@
     </div><!-- End Page Title -->
 
     <section class="section">
+        @include('layouts._message')
         <div class="row">
             <div class="col-lg-12">
-
                 <div class="card">
                     <div class="card-body">
-                        {{--                        <h5 class="card-title">Horizontal Form</h5>--}}
-
                         <!-- Form -->
                         <br>
                         <form action="" method="post">
@@ -54,7 +52,7 @@
                             </fieldset>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success">Сохранить</button>
-                                <a href="{{url('panel/users/list')}}" class="btn btn-secondary">Отмена</a>
+                                <a href="{{url('panel/users/list')}}" class="btn btn-outline-secondary">Назад</a>
                             </div>
                         </form><!-- End Form -->
 

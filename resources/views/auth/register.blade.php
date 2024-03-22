@@ -15,7 +15,9 @@
 
     <!-- Google Fonts -->
     <link href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -51,45 +53,46 @@
                             <div class="card-body">
 
                                 <div class="pt-4 pb-2">
-                                    <h5 class="card-title text-center pb-0 fs-4">Create an Account</h5>
-                                    <p class="text-center small">Enter your personal details to create account</p>
+                                    <h5 class="card-title text-center pb-0 fs-4">Регистрация</h5>
+                                    <p class="text-center small">Введите свои личные данные, чтобы создать учетную запись</p>
                                 </div>
                                 @include('layouts._message')
                                 <form class="row g-3 needs-validation" action="" method="post">
                                     {{csrf_field()}}
                                     <div class="col-12">
-                                        <label for="yourName" class="form-label">Your Name</label>
+                                        <label for="yourName" class="form-label">Имя</label>
                                         <input type="text" name="name" value="{{old('name')}}" class="form-control"
-                                               id="yourName" required>
+                                               id="yourName">
                                         <div class="invalid-feedback">{{$errors->first('name')}}</div>
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="yourEmail" class="form-label">Your Email</label>
+                                        <label for="yourEmail" class="form-label">Email</label>
                                         <input type="email" name="email" value="{{old('email')}}" class="form-control"
-                                               id="yourEmail" required>
+                                               id="yourEmail">
                                         <div class="invalid-feedback">{{$errors->first('email')}}</div>
                                     </div>
 
                                     <div class="col-12">
-                                        <label for="yourPassword" class="form-label">Password</label>
-                                        <input type="password" name="password" class="form-control" id="yourPassword"
-                                               required>
+                                        <label for="yourPassword" class="form-label">Пароль</label>
+                                        <input type="password" name="password" class="form-control" id="yourPassword">
                                         <div class="invalid-feedback">{{$errors->first('password')}}</div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
-                                            <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
-                                            <div class="invalid-feedback">You must agree before submitting.</div>
+                                            <input class="form-check-input" name="terms" type="checkbox" value=""
+                                                   id="acceptTerms" required>
+                                            <label class="form-check-label" for="acceptTerms">Я согласен и <a
+                                                    href="#">принимаю условия</a></label>
+                                            <div class="invalid-feedback">Вы должны согласиться перед отправкой.</div>
                                         </div>
                                     </div>
                                     <div class="col-12">
-                                        <button class="btn btn-primary w-100" type="submit">Create Account</button>
+                                        <button class="btn btn-primary w-100" type="submit">Зарегистрироваться</button>
                                     </div>
                                     <div class="col-12">
-                                        <p class="small mb-0">Already have an account? <a href="/login">Log in</a></p>
+                                        <p class="small mb-0">У Вас уже есть аккаунт? <a href="/login">Войти</a></p>
                                     </div>
                                 </form>
 
@@ -104,7 +107,8 @@
     </div>
 </main><!-- End #main -->
 
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+        class="bi bi-arrow-up-short"></i></a>
 
 <!-- Vendor JS Files -->
 <script src="assets/vendor/apexcharts/apexcharts.min.js"></script>
