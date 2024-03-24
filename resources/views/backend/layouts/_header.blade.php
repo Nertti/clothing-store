@@ -27,8 +27,8 @@
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                     <li class="dropdown-header">
-                        You have 4 new notifications
-                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        У Вас 4 уведомления
+                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Просмотреть все</span></a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
@@ -102,8 +102,8 @@
 
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
                     <li class="dropdown-header">
-                        You have 3 new messages
-                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View all</span></a>
+                        У Вас 3 новых сообщения
+                        <a href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">Посмотреть все</span></a>
                     </li>
                     <li>
                         <hr class="dropdown-divider">
@@ -178,7 +178,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                             <i class="bi bi-person"></i>
-                            <span>My Profile</span>
+                            <span>Профиль</span>
                         </a>
                     </li>
                     <li>
@@ -188,7 +188,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                             <i class="bi bi-gear"></i>
-                            <span>Account Settings</span>
+                            <span>Настройки</span>
                         </a>
                     </li>
                     <li>
@@ -198,7 +198,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
                             <i class="bi bi-question-circle"></i>
-                            <span>Need Help?</span>
+                            <span>Нужна помощь?</span>
                         </a>
                     </li>
                     <li>
@@ -208,7 +208,7 @@
                     <li>
                         <a class="dropdown-item d-flex align-items-center" href="{{url('logout')}}">
                             <i class="bi bi-box-arrow-right"></i>
-                            <span>Sign Out</span>
+                            <span>Выйти</span>
                         </a>
                     </li>
 

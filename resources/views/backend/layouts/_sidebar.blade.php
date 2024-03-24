@@ -62,7 +62,7 @@
         </li><!-- End blog Nav -->
 
         <li class="nav-item">
-            <a class="nav-link @if($active_class !== 'users') collapsed @endif" href="{{url('panel/users/list')}}">
+            <a class="nav-link @if($active_class !== 'users') collapsed @endif" href="{{url('panel/users')}}">
                 <i class="bi bi-people"></i>
                 <span>Пользователи</span>
             </a>
