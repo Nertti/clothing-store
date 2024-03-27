@@ -1,12 +1,13 @@
 @extends('backend.layouts.app')
 @section('content')
     <div class="pagetitle">
-        <h1>Добавить пользователя</h1>
+        <h1>Добавить категорию</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('')}}">Панель управления</a></li>
-                <li class="breadcrumb-item">Пользователи</li>
-                <li class="breadcrumb-item active">Добавить пользователя</li>
+                <li class="breadcrumb-item">Блог</li>
+                <li class="breadcrumb-item">Категории</li>
+                <li class="breadcrumb-item active">Добавить категорию</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -14,62 +15,40 @@
     <section class="section">
         <div class="row">
             <div class="col-lg-12">
-
                 <div class="card">
                     <div class="card-body">
-{{--                        <h5 class="card-title">Horizontal Form</h5>--}}
-
-                        <!-- Form -->
-                        <br>
                         @include('layouts._message')
-
-                        <form action="" method="post">
+                        <form class="row g-3" action="" method="post" novalidate>
                             {{csrf_field()}}
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Имя</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="name" value="{{old('name')}}" required class="form-control" id="inputText">
-                                </div>
+                            <div class="col-8">
+                                <label for="name" class="form-label">Заголовок</label>
+                                <input id="name" type="text" name="name" value="{{old('name')}}" required class="form-control">
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" name="email" value="{{old('email')}}" required class="form-control" id="inputEmail">
-                                </div>
+                            <div class="col-4">
+                                <label for="slug" class="form-label">URL</label>
+                                <input id="slug" type="text" name="slug" value="{{old('slug')}}" required class="form-control">
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputPassword3" class="col-sm-2 col-form-label">Пароль</label>
-                                <div class="col-sm-10">
-                                    <input type="password" name="password" required class="form-control" id="inputPassword">
-                                </div>
+                            <div class="col-6">
+                                <label for="meta_title" class="form-label">Meta заголовок</label>
+                                <input id="meta_title" type="text" name="meta_title" value="{{old('meta_title')}}" required class="form-control">
                             </div>
-                            <fieldset class="row mb-3">
-                                <legend class="col-form-label col-sm-2 pt-0">Админ</legend>
-                                <div class="col-sm-10">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" {{ (old('is_admin') == 1) ? 'checked' : '' }} name="is_admin" id="gridRadios1" value="1">
-                                        <label class="form-check-label" for="gridRadios1">
-                                            Да
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" {{ (old('is_admin') == 0) ? 'checked' : '' }} name="is_admin" id="gridRadios2" value="0">
-                                        <label class="form-check-label" for="gridRadios2">
-                                            Нет
-                                        </label>
-                                    </div>
-                                </div>
-                            </fieldset>
+                            <div class="col-6">
+                                <label for="meta_keys" class="form-label">Meta ключевые слова</label>
+                                <input id="meta_keys" type="text" name="meta_keys" value="{{old('meta_keys')}}" required class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label for="meta_desc" class="form-label">Meta описание</label>
+                                <textarea id="meta_desc" name="meta_desc" required class="form-control">{{old('meta_desc')}}</textarea>
+                            </div>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success">Сохранить</button>
                                 <button type="reset" class="btn btn-outline-secondary">Сбросить</button>
-                                <a href="{{url('panel/users')}}" class="btn btn-secondary">Назад</a>
+                                <a href="{{url('panel/blog/category/')}}" class="btn btn-secondary">Назад</a>
                             </div>
-                        </form><!-- End Form -->
+                        </form><!-- Vertical Form -->
 
                     </div>
                 </div>
-
             </div>
         </div>
     </section>

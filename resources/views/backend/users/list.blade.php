@@ -64,7 +64,7 @@
                                     </tbody>
                                 </table>
                                 <!-- End Table with hoverable rows -->
-                                {!! $getRecord->appends(['page_record' => 'first'])->links() !!}
+                                {!! $getRecord->appends(['page_record' => 'default_users'])->links() !!}
                             </div>
                             <div class="tab-pane fade" id="admin-users" role="tabpanel" aria-labelledby="admin-users-tab">
                                 <!-- Table with hoverable rows -->

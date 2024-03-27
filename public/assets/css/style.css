@@ -1235,9 +1235,9 @@ h6 {
 
 /*дополнительные стили*/
 
-.control-buttons{
-    padding: 15px 0;
-}
+/*.control-buttons{*/
+/*    padding: 15px 0;*/
+/*}*/
 .pr-3 {
     padding-right: 1rem; /* Adding right padding */
 }

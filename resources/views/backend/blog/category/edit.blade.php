@@ -19,37 +19,36 @@
                     <div class="card-body">
                         <!-- Form -->
                         <br>
-                        <form action="" method="post">
+                        <form class="row g-3"  action="" method="post" novalidate>
                             {{csrf_field()}}
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Имя</label>
-                                <div class="col-sm-10">
-                                    <input type="text" name="name" value="{{ $getRecord->name }}" required class="form-control" id="inputText">
+                            <div class="col-8">
+                                <label for="name" class="form-label">Заголовок</label>
+                                <input id="name" type="text" name="name" value="{{ $getRecord->name }}" required class="form-control">
+                            </div>
+                            <div class="col-4">
+                                <label for="slug" class="form-label">URL</label>
+                                <input id="slug" type="text" name="slug" value="{{ $getRecord->slug }}" required class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label for="meta_title" class="form-label">Meta заголовок</label>
+                                <input id="meta_title" type="text" name="meta_title" value="{{ $getRecord->meta_title }}" required class="form-control">
+                            </div>
+                            <div class="col-6">
+                                <label for="meta_keys" class="form-label">Meta ключевые слова</label>
+                                <input id="meta_keys" type="text" name="meta_keys" value="{{ $getRecord->meta_keys }}" required class="form-control">
+                            </div>
+                            <div class="col-12">
+                                <label for="meta_desc" class="form-label">Meta описание</label>
+                                <textarea id="meta_desc" name="meta_desc" required class="form-control">{{ $getRecord->meta_desc }}</textarea>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-check">
+                                    <input class="form-check-input" name="status" type="checkbox" value="1" id="invalidCheck2" required {{ ($getRecord->status  == 1) ? 'checked' : '' }}>
+                                    <label class="form-check-label" for="invalidCheck2">
+                                        Активность
+                                    </label>
                                 </div>
                             </div>
-                            <div class="row mb-3">
-                                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                                <div class="col-sm-10">
-                                    <input type="email" name="email" value="{{ $getRecord->email }}" required class="form-control" id="inputEmail">
-                                </div>
-                            </div>
-                            <fieldset class="row mb-3">
-                                <legend class="col-form-label col-sm-2 pt-0">Админ</legend>
-                                <div class="col-sm-10">
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" {{ ($getRecord->is_admin == 1) ? 'checked' : '' }} name="is_admin" id="gridRadios1" value="1">
-                                        <label class="form-check-label" for="gridRadios1">
-                                            Да
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" {{ ($getRecord->is_admin == 0) ? 'checked' : '' }} name="is_admin" id="gridRadios2" value="0" >
-                                        <label class="form-check-label" for="gridRadios2">
-                                            Нет
-                                        </label>
-                                    </div>
-                                </div>
-                            </fieldset>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success">Сохранить</button>
                                 <a href="{{url('panel/users')}}" class="btn btn-outline-secondary">Назад</a>

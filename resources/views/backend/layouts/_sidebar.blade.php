@@ -44,17 +44,17 @@
         </li><!-- End catalog Nav -->
 
         <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#blog-nav" data-bs-toggle="collapse" href="#">
+            <a class="nav-link @if($active_class !== 'category' && $active_class !== 'posts') collapsed @endif" data-bs-target="#blog-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-collection"></i><span>Блог</span><i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="blog-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="blog-nav" class="nav-content collapse @if($active_class === 'category' || $active_class === 'posts') show @endif" data-bs-parent="#sidebar-nav">
                 <li>
-                    <a href="#">
+                    <a @if($active_class === 'category') class="active" @endif href="/panel/blog/category/">
                         <i class="bi bi-circle"></i><span>Категории</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a @if($active_class === 'posts') class="active" @endif href="#">
                         <i class="bi bi-circle"></i><span>Посты</span>
                     </a>
                 </li>
