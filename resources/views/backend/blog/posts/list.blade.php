@@ -19,7 +19,7 @@
                     <div class="card-body">
 {{--                        <h5 class="card-title">Table with hoverable rows</h5>--}}
                         <div class="control-buttons">
-                            <a href="{{url('panel/blog/category/add/')}}" class="btn btn-primary">Добавить</a>
+                            <a href="{{url('panel/blog/posts/add/')}}" class="btn btn-primary">Добавить</a>
                         </div>
                         <!-- Table with hoverable rows -->
                         <table class="table table-hover">
@@ -42,12 +42,30 @@
                                     <td>{{($value->status === 1) ? 'Да' : 'Нет'}}</td>
                                     <td>{{ date('d.m.Y H:i', strtotime($value->created_at)) }}</td>
                                     <td>
-                                        <a href="{{url('panel/blog/category/edit/' . $value->id)}}" class="btn btn-warning">
+                                        <a href="{{url('panel/blog/posts/edit/' . $value->id)}}" class="btn btn-warning">
                                             <i class="bi bi-pencil-square"></i>
                                         </a>
-                                        <a onclick="return confirm('Вы уверены что хотите удалить пользователя?')" href="{{url('panel/blog/category/delete/' . $value->id)}}" class="btn btn-danger">
+                                        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletpost{{$value->id}}">
                                             <i class="bi bi-trash"></i>
-                                        </a>
+                                        </button>
+                                        <div class="modal fade" id="deletpost{{$value->id}}" tabindex="-1" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Подтвердите</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Вы действительно хотите удалить пост?<br>
+                                                        Это действие невозможно будет отменить!
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                                        <a href="{{url('panel/blog/posts/delete/' . $value->id)}}" class="btn btn-danger">Удалить</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </td>
                                 </tr>
                                 @empty

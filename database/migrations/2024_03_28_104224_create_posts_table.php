@@ -15,14 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('category');
-            $table->string('content');
-            $table->string('tags');
-            $table->string('comments');
+            $table->integer('id_category')->nullable();
+            $table->string('image')->nullable();
+            $table->string('content')->nullable();
+//            $table->string('tags')->nullable();
+//            $table->string('comments')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_desc')->nullable();
             $table->string('meta_keys')->nullable();
             $table->integer('status')->default(0);
+            $table->integer('id_user');
             $table->timestamps();
         });
     }

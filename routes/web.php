@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PaginationController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
@@ -35,11 +36,11 @@ Route::group(['middleware' => 'admin'], function (){
     Route::post('panel/blog/category/edit/{id}', [CategoryController::class, 'update']);
     Route::get('panel/blog/category/delete/{id}', [CategoryController::class, 'delete']);
 
-    Route::get('panel/blog/posts/', [AdminController::class, 'list']);
-    Route::get('panel/blog/posts/add', [AdminController::class, 'add']);
-    Route::post('panel/blog/posts/add', [AdminController::class, 'insert']);
-    Route::get('panel/blog/posts/edit/{id}', [AdminController::class, 'edit']);
-    Route::post('panel/blog/posts/edit/{id}', [AdminController::class, 'update']);
-    Route::get('panel/blog/posts/delete/{id}', [AdminController::class, 'delete']);
+    Route::get('panel/blog/posts/', [PostController::class, 'list']);
+    Route::get('panel/blog/posts/add', [PostController::class, 'add']);
+    Route::post('panel/blog/posts/add', [PostController::class, 'insert']);
+    Route::get('panel/blog/posts/edit/{id}', [PostController::class, 'edit']);
+    Route::post('panel/blog/posts/edit/{id}', [PostController::class, 'update']);
+    Route::get('panel/blog/posts/delete/{id}', [PostController::class, 'delete']);
 //    end blog
 });

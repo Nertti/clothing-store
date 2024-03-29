@@ -21,4 +21,15 @@ class Category extends Model
         return self::select('category.*')
             ->orderBy('category.id', 'asc');
     }
+    static function getCategory()
+    {
+        return self::select('category.*')
+            ->where('status','=', '1');
+    }
+    static function getCategoryEdit($id)
+    {
+        return self::select('category.*')
+            ->where('status','=', '1')
+            ->where('id','!=', $id);
+    }
 }
