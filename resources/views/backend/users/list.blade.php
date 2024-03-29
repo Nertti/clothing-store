@@ -51,9 +51,27 @@
                                                 <a href="{{url('panel/users/edit/' . $value->id)}}" class="btn btn-warning">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
-                                                <a onclick="return confirm('Вы уверены что хотите удалить пользователя?')" href="{{url('panel/users/delete/' . $value->id)}}" class="btn btn-danger">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletuser{{$value->id}}">
                                                     <i class="bi bi-trash"></i>
-                                                </a>
+                                                </button>
+                                                <div class="modal fade" id="deletuser{{$value->id}}" tabindex="-1" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Подтвердите</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Вы уверены что хотите удалить пользователя?<br>
+                                                                Это действие невозможно будет отменить!
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                                                <a href="{{url('panel/users/delete/' . $value->id)}}" class="btn btn-danger">Удалить</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty
@@ -91,9 +109,27 @@
                                                 <a href="{{url('panel/users/edit/' . $value->id)}}" class="btn btn-warning">
                                                     <i class="bi bi-pencil-square"></i>
                                                 </a>
-                                                <a onclick="return confirm('Вы уверены что хотите удалить пользователя?')" href="{{url('panel/users/delete/' . $value->id)}}" class="btn btn-danger">
+                                                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletuser{{$value->id}}">
                                                     <i class="bi bi-trash"></i>
-                                                </a>
+                                                </button>
+                                                <div class="modal fade" id="deletuser{{$value->id}}" tabindex="-1" style="display: none;" aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title">Подтвердите</h5>
+                                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                Вы уверены что хотите удалить пользователя?<br>
+                                                                Это действие невозможно будет отменить!
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+                                                                <a href="{{url('panel/users/delete/' . $value->id)}}" class="btn btn-danger">Удалить</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                         </tr>
                                     @empty

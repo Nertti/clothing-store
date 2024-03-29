@@ -54,7 +54,7 @@
                     </a>
                 </li>
                 <li>
-                    <a @if($active_class === 'posts') class="active" @endif href="#">
+                    <a @if($active_class === 'posts') class="active" @endif href="/panel/blog/posts/">
                         <i class="bi bi-circle"></i><span>Посты</span>
                     </a>
                 </li>

@@ -27,10 +27,7 @@
                             </div>
                             <div class="col-4">
                                 <label for="slug" class="form-label">URL</label>
-                                <div class="input-group mb-3">
-                                    <span class="input-group-text" id="slug-addon">https://example.com/blog/</span>
-                                    <input id="slug" type="text" name="slug" value="{{ $getRecord->slug }}" required class="form-control">
-                                </div>
+                                <input id="slug" type="text" name="slug" value="{{ $getRecord->slug }}" required class="form-control">
                             </div>
                             <div class="col-6">
                                 <label for="meta_title" class="form-label">Meta заголовок</label>

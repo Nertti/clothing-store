@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PaginationController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
@@ -19,25 +21,25 @@ Route::get('logout', [AuthController::class, 'logout']);
 Route::group(['middleware' => 'admin'], function (){
     Route::get('panel/dashboard', [DashboardController::class, 'dashboard']);
 
-    Route::get('panel/users', [AdminController::class, 'users_list']);
-    Route::get('panel/users/add', [AdminController::class, 'add_user']);
-    Route::post('panel/users/add', [AdminController::class, 'insert_user']);
-    Route::get('panel/users/edit/{id}', [AdminController::class, 'edit_user']);
-    Route::post('panel/users/edit/{id}', [AdminController::class, 'update_user']);
-    Route::get('panel/users/delete/{id}', [AdminController::class, 'delete_user']);
+    Route::get('panel/users', [UserController::class, 'list']);
+    Route::get('panel/users/add', [UserController::class, 'add']);
+    Route::post('panel/users/add', [UserController::class, 'insert']);
+    Route::get('panel/users/edit/{id}', [UserController::class, 'edit']);
+    Route::post('panel/users/edit/{id}', [UserController::class, 'update']);
+    Route::get('panel/users/delete/{id}', [UserController::class, 'delete']);
 //    end users
-    Route::get('panel/blog/category/', [AdminController::class, 'category_list']);
-    Route::get('panel/blog/category/add', [AdminController::class, 'category_add']);
-    Route::post('panel/blog/category/add', [AdminController::class, 'category_insert']);
-    Route::get('panel/blog/category/edit/{id}', [AdminController::class, 'category_edit']);
-    Route::post('panel/blog/category/edit/{id}', [AdminController::class, 'category_update']);
-    Route::get('panel/blog/category/delete/{id}', [AdminController::class, 'category_delete']);
+    Route::get('panel/blog/category/', [CategoryController::class, 'list']);
+    Route::get('panel/blog/category/add', [CategoryController::class, 'add']);
+    Route::post('panel/blog/category/add', [CategoryController::class, 'insert']);
+    Route::get('panel/blog/category/edit/{id}', [CategoryController::class, 'edit']);
+    Route::post('panel/blog/category/edit/{id}', [CategoryController::class, 'update']);
+    Route::get('panel/blog/category/delete/{id}', [CategoryController::class, 'delete']);
 
-    Route::get('panel/blog/posts/', [AdminController::class, 'posts_list']);
-    Route::get('panel/blog/posts/add', [AdminController::class, 'post_add']);
-    Route::post('panel/blog/posts/add', [AdminController::class, 'post_insert']);
-    Route::get('panel/blog/posts/edit/{id}', [AdminController::class, 'post_edit']);
-    Route::post('panel/blog/posts/edit/{id}', [AdminController::class, 'post_update']);
-    Route::get('panel/blog/posts/delete/{id}', [AdminController::class, 'post_delete']);
+    Route::get('panel/blog/posts/', [AdminController::class, 'list']);
+    Route::get('panel/blog/posts/add', [AdminController::class, 'add']);
+    Route::post('panel/blog/posts/add', [AdminController::class, 'insert']);
+    Route::get('panel/blog/posts/edit/{id}', [AdminController::class, 'edit']);
+    Route::post('panel/blog/posts/edit/{id}', [AdminController::class, 'update']);
+    Route::get('panel/blog/posts/delete/{id}', [AdminController::class, 'delete']);
 //    end blog
 });
