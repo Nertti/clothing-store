@@ -15,20 +15,23 @@ class PostController extends Controller
         $data['getRecord'] = Post::getRecord()->paginate(10);
         return view('backend.blog.posts.list', $data);
     }
-    public function add( Request $request)
+
+    public function add(Request $request)
     {
         $data['active_class'] = 'posts';
         $data['getCategory'] = Category::getCategory()->get();
         return view('backend.blog.posts.add', $data);
     }
-    public function insert( Request $request)
+
+    public function insert(Request $request)
     {
+
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'slug' => 'required|unique:posts,slug,',
 
             'id_category' => 'required',
-            'content' => 'required',
+            'description' => 'required',
             'image' => 'required',
 
             'meta_title' => 'required',
@@ -69,7 +72,7 @@ class PostController extends Controller
 
         $save->id_category = trim($request->id_category);
         $save->content = trim($request->content);
-        $save->image = trim($request->image);
+        //$save->image = trim($request->image);
 
         $save->meta_title = trim($request->meta_title);
         $save->meta_keys = trim($request->meta_keys);
@@ -78,23 +81,39 @@ class PostController extends Controller
         $save->status = trim(!empty($request->status) ? 1 : 0);
         $save->id_user = trim($request->id_user);
 
+        if (!empty($request->file('image')))
+        {
+            $ext = $request->file('image')->getClientOriginalExtension();
+            $file = $request->file('image');
+            $random_number = rand(10000, 99999);
+            $current_datetime = date('YmdHis');
+            $filename = $current_datetime . '_' . $random_number . '.' . $ext;
+            $file->move('upload/blog/', $filename);
+            $save->image = $filename;
+        }
         $save->save();
 
         return redirect('panel/blog/posts/')->with('success', 'Пост успешно добавлен');
     }
+
     public function edit($id)
     {
         $data['active_class'] = 'posts';
         $data['getRecord'] = Post::getSingle($id);
-        $data['getRecordCategory'] = Category::getCategoryEdit($id);
         $data['getCategory'] = Category::getCategory()->get();
         return view('backend.blog.posts.edit', $data);
     }
-    public function update( $id, Request $request)
+
+    public function update($id, Request $request)
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required',
             'slug' => 'required|unique:posts,slug,' . $id,
+
+            'id_category' => 'required',
+            'content' => 'required',
+            'image' => 'required',
+
             'meta_title' => 'required',
             'meta_keys' => 'required',
             'meta_desc' => 'required',
@@ -106,6 +125,15 @@ class PostController extends Controller
             }
             if ($validator->errors()->has('slug')) {
                 return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнен или не уникален URL');
+            }
+            if ($validator->errors()->has('id_category')) {
+                return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнена категория');
+            }
+            if ($validator->errors()->has('content')) {
+                return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнен контент поста');
+            }
+            if ($validator->errors()->has('image')) {
+                return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнена картинка');
             }
             if ($validator->errors()->has('meta_title')) {
                 return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнен Meta заголовок');
@@ -121,18 +149,27 @@ class PostController extends Controller
         $save = Post::getSingle($id);
         $save->name = trim($request->name);
         $save->slug = trim($request->slug);
+
+        $save->id_category = trim($request->id_category);
+        $save->content = trim($request->content);
+        $save->image = trim($request->image);
+
         $save->meta_title = trim($request->meta_title);
         $save->meta_keys = trim($request->meta_keys);
         $save->meta_desc = trim($request->meta_desc);
+
         $save->status = trim(!empty($request->status) ? 1 : 0);
+        $save->id_user = trim($request->id_user);
+
         $save->save();
 
-        return redirect('panel/blog/posts/')->with('success', 'Данные категории обновлены');
+        return redirect('panel/blog/posts/')->with('success', 'Данные поста обновлены');
     }
+
     public function delete($id)
     {
         $user = Post::getSingle($id);
         $user->delete();
-        return redirect('panel/posts/')->with('success', 'Пост успешно удалён');
+        return redirect('panel/blog/posts/')->with('success', 'Пост успешно удалён');
     }
 }

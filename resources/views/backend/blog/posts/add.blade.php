@@ -54,7 +54,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="content" class="col-sm-2 col-form-label">Контент</label>
-                                <textarea class="tinymce-editor" id="content" name="content">{{old('content')}}</textarea>
+                                <textarea class="tinymce-editor" id="content" name="description">{{old('content')}}</textarea>
                             </div>
                             <br>
                             <hr>

@@ -33,12 +33,13 @@
                 <div class="form-floating">
                     <select class="form-select" id="floatingSelect"
                             aria-label="Floating label select example" name="id_category">
-                        <option selected="">Выберите одну из доступных категорий</option>
-                        @forelse($getCategory as $value)
-                            <option value="{{$value->id}}">{{$value->name}}</option>
-                        @empty
-
-                        @endforelse
+                        @foreach($getCategory as $value)
+                            @if($value->id == $getRecord->id_category)
+                                <option selected="" value="{{$value->id}}">{{$value->name}}</option>
+                            @else
+                                <option value="{{$value->id}}">{{$value->name}}</option>
+                            @endif
+                        @endforeach
                     </select>
                     <label for="floatingSelect">Категория</label>
                 </div>
@@ -71,7 +72,7 @@
             <div class="col-12">
                 <div class="form-check">
                     <input class="form-check-input" name="status" type="checkbox" value="1"
-                           id="invalidCheck2" required>
+                           id="invalidCheck2" required {{ ($getRecord->status  == 1) ? 'checked' : '' }}>
                     <label class="form-check-label" for="invalidCheck2">
                         Активность
                     </label>
