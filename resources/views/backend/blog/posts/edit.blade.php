@@ -1,12 +1,12 @@
 @extends('backend.layouts.app')
 @section('content')
     <div class="pagetitle">
-        <h1>Изменить пользователя</h1>
+        <h1>Изменить пост</h1>
         <nav>
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{url('')}}">Панель управления</a></li>
-                <li class="breadcrumb-item">Пользователи</li>
-                <li class="breadcrumb-item active">Изменить пользователя</li>
+                <li class="breadcrumb-item">Посты</li>
+                <li class="breadcrumb-item active">Изменить пост</li>
             </ol>
         </nav>
     </div><!-- End Page Title -->
@@ -49,8 +49,8 @@
                 <input class="form-control" type="file" id="formFile" name="image" value="{{ $getRecord->image }}">
             </div>
             <div class="col-12">
-                <label for="content" class="col-sm-2 col-form-label">Контент</label>
-                <textarea class="tinymce-editor" id="content" name="content">{{ $getRecord->content }}</textarea>
+                <label for="description" class="col-sm-2 col-form-label">Контент</label>
+                <textarea class="tinymce-editor" id="description" name="description">{{ $getRecord->description }}</textarea>
             </div>
             <br>
             <hr>

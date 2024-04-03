@@ -39,7 +39,13 @@
                                     <th scope="row">{{$value->id}}</th>
                                     <td>{{$value->name}}</td>
                                     <td>{{$value->slug}}</td>
-                                    <td>{{($value->status === 1) ? 'Да' : 'Нет'}}</td>
+                                    <td>
+                                        @if($value->status === 1)
+                                            <span class="badge bg-success">Активен</span>
+                                        @else
+                                            <span class="badge bg-danger">Не активен</span>
+                                        @endif
+                                    </td>
                                     <td>{{ date('d.m.Y H:i', strtotime($value->created_at)) }}</td>
                                     <td>
                                         <a href="{{url('panel/blog/posts/edit/' . $value->id)}}" class="btn btn-warning">

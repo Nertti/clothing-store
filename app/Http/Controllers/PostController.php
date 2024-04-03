@@ -49,7 +49,7 @@ class PostController extends Controller
             if ($validator->errors()->has('id_category')) {
                 return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнена категория');
             }
-            if ($validator->errors()->has('content')) {
+            if ($validator->errors()->has('description')) {
                 return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнен контент поста');
             }
             if ($validator->errors()->has('image')) {
@@ -71,7 +71,7 @@ class PostController extends Controller
         $save->slug = trim($request->slug);
 
         $save->id_category = trim($request->id_category);
-        $save->content = trim($request->content);
+        $save->description = trim($request->description);
         //$save->image = trim($request->image);
 
         $save->meta_title = trim($request->meta_title);
@@ -111,7 +111,7 @@ class PostController extends Controller
             'slug' => 'required|unique:posts,slug,' . $id,
 
             'id_category' => 'required',
-            'content' => 'required',
+            'description' => 'required',
             'image' => 'required',
 
             'meta_title' => 'required',
@@ -129,7 +129,7 @@ class PostController extends Controller
             if ($validator->errors()->has('id_category')) {
                 return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнена категория');
             }
-            if ($validator->errors()->has('content')) {
+            if ($validator->errors()->has('description')) {
                 return redirect()->back()->withErrors($validator)->withInput()->with('error', 'Не заполнен контент поста');
             }
             if ($validator->errors()->has('image')) {
@@ -151,8 +151,8 @@ class PostController extends Controller
         $save->slug = trim($request->slug);
 
         $save->id_category = trim($request->id_category);
-        $save->content = trim($request->content);
-        $save->image = trim($request->image);
+        $save->description = trim($request->description);
+        //$save->image = trim($request->image);
 
         $save->meta_title = trim($request->meta_title);
         $save->meta_keys = trim($request->meta_keys);

@@ -53,8 +53,8 @@
                                 <input class="form-control" type="file" id="formFile" name="image">
                             </div>
                             <div class="col-12">
-                                <label for="content" class="col-sm-2 col-form-label">Контент</label>
-                                <textarea class="tinymce-editor" id="content" name="description">{{old('content')}}</textarea>
+                                <label for="description" class="col-sm-2 col-form-label">Контент</label>
+                                <textarea class="tinymce-editor" id="description" name="description">{{old('description')}}</textarea>
                             </div>
                             <br>
                             <hr>
@@ -86,7 +86,7 @@
                             <div class="text-center">
                                 <button type="submit" class="btn btn-success">Сохранить</button>
                                 <button type="reset" class="btn btn-outline-secondary">Сбросить</button>
-                                <a href="{{url('panel/blog/category/')}}" class="btn btn-secondary">Назад</a>
+                                <a href="{{url('panel/blog/posts/')}}" class="btn btn-secondary">Назад</a>
                             </div>
                         </form>
                     </div>
