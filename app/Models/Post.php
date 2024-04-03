@@ -25,8 +25,8 @@ class Post extends Model
     }
     public function getImage()
     {
-        if (!empty($this->image_file) && file_exists('upload/blog/'.$this->image_file)){
-            return url('upload/blog/'.$this->image_file);
+        if (!empty($this->image) && file_exists('upload/blog/'.$this->image)){
+            return url('upload/blog/'.$this->image);
         }
         else
         {

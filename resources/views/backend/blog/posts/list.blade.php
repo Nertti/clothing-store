@@ -27,6 +27,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Заголовок</th>
+                                <th scope="col">Картинка</th>
                                 <th scope="col">URL</th>
                                 <th scope="col">Активность</th>
                                 <th scope="col">Дата создания</th>
@@ -38,6 +39,11 @@
                                 <tr>
                                     <th scope="row">{{$value->id}}</th>
                                     <td>{{$value->name}}</td>
+                                    <th>
+                                        @if(!empty($value->getImage()))
+                                            <img src="{{$value->getImage()}}" alt="{{$value->name}}" height="100">
+                                        @endif
+                                    </th>
                                     <td>{{$value->slug}}</td>
                                     <td>
                                         @if($value->status === 1)

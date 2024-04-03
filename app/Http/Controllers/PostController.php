@@ -161,6 +161,21 @@ class PostController extends Controller
         $save->status = trim(!empty($request->status) ? 1 : 0);
         $save->id_user = trim($request->id_user);
 
+        if (!empty($request->file('image')))
+        {
+            if (!empty($save->getImage()))
+            {
+                unlink('upload/blog/'. $save->image);
+            }
+            $ext = $request->file('image')->getClientOriginalExtension();
+            $file = $request->file('image');
+            $random_number = rand(10000, 99999);
+            $current_datetime = date('YmdHis');
+            $filename = $current_datetime . '_' . $random_number . '.' . $ext;
+            $file->move('upload/blog/', $filename);
+            $save->image = $filename;
+        }
+
         $save->save();
 
         return redirect('panel/blog/posts/')->with('success', 'Данные поста обновлены');
@@ -168,8 +183,12 @@ class PostController extends Controller
 
     public function delete($id)
     {
-        $user = Post::getSingle($id);
-        $user->delete();
+        $blog = Post::getSingle($id);
+        if (!empty($blog->getImage()))
+        {
+            unlink('upload/blog/'. $blog->image);
+        }
+        $blog->delete();
         return redirect('panel/blog/posts/')->with('success', 'Пост успешно удалён');
     }
 }

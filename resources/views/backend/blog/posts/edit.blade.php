@@ -44,8 +44,13 @@
                     <label for="floatingSelect">Категория</label>
                 </div>
             </div>
-            <div class="col-12">
-                <label for="formFile" class="col-sm-2 col-form-label">Изображение</label>
+            <div class="col-3">
+                @if(!empty($getRecord->getImage()))
+                    <img src="{{$getRecord->getImage()}}" alt="{{$getRecord->name}}" height="200">
+                @endif
+            </div>
+            <div class="col-9">
+                <label for="formFile" class="col-sm-6 col-form-label">Изображение (Если хотите заменить, загрузите новое)</label>
                 <input class="form-control" type="file" id="formFile" name="image" value="{{ $getRecord->image }}">
             </div>
             <div class="col-12">
