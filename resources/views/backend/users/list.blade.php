@@ -28,7 +28,7 @@
                         <div class="tab-content pt-2" id="myTabContent">
                             <div class="tab-pane fade active show" id="default-users" role="tabpanel" aria-labelledby="default-users-tab">
                                 <!-- Table with hoverable rows -->
-                                <table class="table table-hover">
+                                <table class="table table-hover datatable ">
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -36,7 +36,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Подтверждён</th>
                                         <th scope="col">Дата регистрации</th>
-                                        <th scope="col">Управление</th>
+                                        <th scope="col" data-sortable="false">Управление</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -82,11 +82,11 @@
                                     </tbody>
                                 </table>
                                 <!-- End Table with hoverable rows -->
-                                {!! $getRecord->appends(['page_record' => 'default_users'])->links() !!}
+{{--                                {!! $getRecord->appends(['page_record' => 'default_users'])->links() !!}--}}
                             </div>
                             <div class="tab-pane fade" id="admin-users" role="tabpanel" aria-labelledby="admin-users-tab">
                                 <!-- Table with hoverable rows -->
-                                <table class="table table-hover">
+                                <table class="table table-hover datatable ">
                                     <thead>
                                     <tr>
                                         <th scope="col">#</th>
@@ -94,7 +94,7 @@
                                         <th scope="col">Email</th>
                                         <th scope="col">Подтверждён</th>
                                         <th scope="col">Дата регистрации</th>
-                                        <th scope="col">Управление</th>
+                                        <th scope="col" data-sortable="false">Управление</th>
                                     </tr>
                                     </thead>
                                     <tbody>

@@ -46,7 +46,7 @@
             </div>
             <div class="col-3">
                 @if(!empty($getRecord->getImage()))
-                    <img src="{{$getRecord->getImage()}}" alt="{{$getRecord->name}}" height="200">
+                    <img src="{{$getRecord->getImage()}}" alt="{{$getRecord->name}}" class="col-12">
                 @endif
             </div>
             <div class="col-9">

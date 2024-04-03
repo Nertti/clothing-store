@@ -12,7 +12,8 @@ class PostController extends Controller
     public function list()
     {
         $data['active_class'] = 'posts';
-        $data['getRecord'] = Post::getRecord()->paginate(10);
+//        $data['getRecord'] = Post::getRecord()->paginate(10);
+        $data['getRecord'] = Post::getRecord()->get();
         return view('backend.blog.posts.list', $data);
     }
 

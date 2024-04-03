@@ -11,7 +11,8 @@ class CategoryController extends Controller
     public function list()
     {
         $data['active_class'] = 'category';
-        $data['getRecord'] = Category::getRecordCategory()->paginate(10);
+//        $data['getRecord'] = Category::getRecordCategory()->paginate(10);
+        $data['getRecord'] = Category::getRecordCategory()->get();
         return view('backend.blog.category.list', $data);
     }
     public function add( Request $request)

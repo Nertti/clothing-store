@@ -12,7 +12,8 @@ class UserController extends Controller
     public function list()
     {
         $data['active_class'] = 'users';
-        $data['getRecord'] = User::getRecordUser()->paginate(10);
+        $data['getRecord'] = User::getRecordUser()->get();
+//        $data['getRecord'] = User::getRecordUser()->paginate(10);
         $data['getRecordAdmin'] = User::getRecordUserAdmin()->get();
 //        $data['getRecordAdmin'] = User::getRecordUserAdmin()->paginate(10);
         return view('backend.users.list', $data);

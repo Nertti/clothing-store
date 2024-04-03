@@ -21,17 +21,17 @@
                         <div class="control-buttons">
                             <a href="{{url('panel/blog/posts/add/')}}" class="btn btn-primary">Добавить</a>
                         </div>
-                        <!-- Table with hoverable rows -->
-                        <table class="table table-hover">
+                        <table class="table table-hover datatable">                        <!-- Table with hoverable rows -->
+
                             <thead>
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Заголовок</th>
                                 <th scope="col">Картинка</th>
                                 <th scope="col">URL</th>
-                                <th scope="col">Активность</th>
+                                <th scope="col">Статус</th>
                                 <th scope="col">Дата создания</th>
-                                <th scope="col">Управление</th>
+                                <th scope="col" data-sortable="false">Управление</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -88,7 +88,7 @@
                             </tbody>
                         </table>
                         <!-- End Table with hoverable rows -->
-                        {!! $getRecord->appends(\Illuminate\Support\Facades\Request::except('page'))->links() !!}
+{{--                        {!! $getRecord->appends(\Illuminate\Support\Facades\Request::except('page'))->links() !!}--}}
                     </div>
                 </div>
 
